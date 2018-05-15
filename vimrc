@@ -28,6 +28,7 @@ set wildmenu
 " plugin on GitHub repo
  Plugin 'tpope/vim-fugitive'
  Plugin 'vim-scripts/taglist.vim'
+ Plugin 'vim-scripts/cscope.vim'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -71,8 +72,11 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_switch_buffer = 'et'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
 " set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+" let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
 
 " Syntastic settings
 " set statusline+=%#warningmsg#
@@ -86,8 +90,8 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 " Syntastic end settings
 
 
-" colorscheme jellybeans
-colorscheme solarized
+colorscheme jellybeans
+"colorscheme solarized
 set t_Co=256
 set background=dark
 let g:solarized_termcolors=256
@@ -133,7 +137,12 @@ nmap <F6> :NERDTreeToggle<CR>
 nnoremap <silent> <F7> :TlistToggle<CR>
 
 " Convert TAB to 4 spaces "
-set tabstop=4 shiftwidth=4 expandtab
+set tabstop=4
+" set tabstop=4 shiftwidth=4 expandtab"
 " Convert TAB to 4 spaces "
 
+set list
+set listchars=eol:¬,tab:>→,trail:~,extends:>,precedes:<,space:∙
 
+set splitright
+map <F5> :!cscope -Rbq<CR>:cs reset<CR><CR>
