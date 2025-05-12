@@ -15,3 +15,4 @@ $ stow uzbl
 $ stow vim
 ```
 And, voila, all your config files (well, symbolic links to them) are all in the correct place.
+test1
